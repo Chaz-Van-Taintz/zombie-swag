@@ -2,28 +2,17 @@ import pygame
 from Ball import Ball
 
 
-def main():
-	
-	return 0
-
-if __name__ == '__main__':
-	main()
-
 class Zombie(Ball):
 	def __init__(self, pos):
-		Ball.__init__(self, "images/Player/pballbu.png", [0,0], pos)
-		self.upImages = [pygame.image.load("images/Zombie/zombieup1.png"),
-						 pygame.image.load("images/Zombie/zombieup2.png"),
-						 pygame.image.load("images/Zombie/zombieup3.png")]
-		self.downImages = [pygame.image.load("images/Zombie/zombieup1.png"),
-						   pygame.image.load("images/Zombie/zombieup2.png"),
-						   pygame.image.load("images/Zombie/zombieup3.png")]
-		self.leftImages = [pygame.image.load("images/Zombie/pballrl.png"),
-						   pygame.image.load("images/Zombie/pballgl.png"),
-						   pygame.image.load("images/Zombie/pballbl.png")]
-		self.rightImages = [pygame.image.load("images/Zombie/pballrr.png"),
-						    pygame.image.load("images/Zombie/pballgr.png"),
-						    pygame.image.load("images/Zombie/pballbr.png")]
+		Ball.__init__(self, "images/Zombie/zombieu.png", [0,0], pos)
+		self.upImages = [pygame.image.load("images/Zombie/zombieu1.png"),
+						 ]
+		self.downImages = [pygame.image.load("images/Zombie/zombied1.png"),
+						   ]
+		self.leftImages = [pygame.image.load("images/Zombie/zombiel1.png"),
+						   ]
+		self.rightImages = [pygame.image.load("images/Zombie/zombier1.png"),
+						    ]
 		self.facing = "up"
 		self.changed = False
 		self.images = self.upImages
@@ -75,4 +64,3 @@ class Zombie(Ball):
 				self.images = self.leftImages
 			
 			self.image = self.images[self.frame]
-
