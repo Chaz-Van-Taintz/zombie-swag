@@ -4,7 +4,7 @@ from Ball import Ball
 
 class Bullet(Ball):
 	def __init__(self, pos, heading, bspeed):
-		Ball.__init__(self, "bullet1", [0,0], pos)
+		Ball.__init__(self, "RSC/Bullet/bullet1.png", [0,0], pos)
 		if heading == "up":
 			self.speedy = -bspeed
 		if heading == "down":

@@ -1,10 +1,10 @@
-import pygame
+import pygame,math
 from Ball import Ball
 
 
 class Zombie(Ball):
 	def __init__(self, pos):
-		Ball.__init__(self, "RSC/Zombie/zombieu.png", [0,0], pos)
+		Ball.__init__(self, "RSC/Zombie/zombieu1.png", [0,0], pos)
 		self.upImages = [pygame.image.load("RSC/Zombie/zombieu1.png"),
 						 ]
 		self.downImages = [pygame.image.load("RSC/Zombie/zombied1.png"),
@@ -30,13 +30,13 @@ class Zombie(Ball):
 		self.animate()
 		self.changed = False
 	
-	def facePlayer(pt):
+	def facePlayer(self, pt):
 		xdiff = pt[0] - self.rect.center[0]
 		ydiff = pt[1] - self.rect.center[1]
 		
-		if math.abs(xdiff) > math.abs(ydiff): #left/right
+		if math.fabs(xdiff) > math.fabs(ydiff): #left/right
 			if xdiff > 0: #right
-				self.facing = right
+				self.facing = "right"
 				
 		
 	def collideWall(self, width, height):

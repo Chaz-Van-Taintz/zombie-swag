@@ -71,10 +71,10 @@ while True:
 	for bullet in bullets:
 		bullet.update(width, height)
 		
-	for bully in enemies:
-		for victem in enemies:
-			bully.collideZombie(victem)
-			bully.collidePlayer(player)
+	#for bully in enemies:
+		#for victem in enemies:
+			#bully.collideZombie(victem)
+			#bully.collidePlayer(player)
 	
 	for enemy in enemies:
 		if not enemy.living:

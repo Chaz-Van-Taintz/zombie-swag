@@ -1,5 +1,6 @@
 import pygame
 from Ball import Ball
+from Bullet import Bullet
 
 class Player(Ball):
 	def __init__(self, pos):
