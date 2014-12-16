@@ -6,3 +6,12 @@ class Powerup(Ball):
 		self.upImages = [pygame.image.load("images/Powerup/powerup2.png"),
 						 pygame.image.load("images/Powerup/powerup3.png"),
 						 pygame.image.load("images/Powerup/powerup4.png")]                                                                                                            
+
+
+def main():
+	
+	return 0
+
+if __name__ == '__main__':
+	main()
+

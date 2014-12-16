@@ -4,14 +4,14 @@ from Ball import Ball
 
 class Zombie(Ball):
 	def __init__(self, pos):
-		Ball.__init__(self, "images/Zombie/zombieu.png", [0,0], pos)
-		self.upImages = [pygame.image.load("images/Zombie/zombieu1.png"),
+		Ball.__init__(self, "RSC/Zombie/zombieu.png", [0,0], pos)
+		self.upImages = [pygame.image.load("RSC/Zombie/zombieu1.png"),
 						 ]
-		self.downImages = [pygame.image.load("images/Zombie/zombied1.png"),
+		self.downImages = [pygame.image.load("RSC/Zombie/zombied1.png"),
 						   ]
-		self.leftImages = [pygame.image.load("images/Zombie/zombiel1.png"),
+		self.leftImages = [pygame.image.load("RSC/Zombie/zombiel1.png"),
 						   ]
-		self.rightImages = [pygame.image.load("images/Zombie/zombier1.png"),
+		self.rightImages = [pygame.image.load("RSC/Zombie/zombier1.png"),
 						    ]
 		self.facing = "up"
 		self.changed = False
@@ -24,10 +24,20 @@ class Zombie(Ball):
 		self.rect = self.image.get_rect(center = self.rect.center)
 		self.maxSpeed = 10
 			
-	def update(self, width, height):
+	def update(self, width, height, playerPos):
+		self.facePlayer(playerPos)
 		Ball.update(self, width, height)
 		self.animate()
 		self.changed = False
+	
+	def facePlayer(pt):
+		xdiff = pt[0] - self.rect.center[0]
+		ydiff = pt[1] - self.rect.center[1]
+		
+		if math.abs(xdiff) > math.abs(ydiff): #left/right
+			if xdiff > 0: #right
+				self.facing = right
+				
 		
 	def collideWall(self, width, height):
 		if not self.didBounceX:

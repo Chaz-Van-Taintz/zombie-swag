@@ -2,18 +2,18 @@ import pygame, sys, random
 from Ball import Ball
 from Player import Player
 from Bullet import Bullet
-from Zombies import Zombies
-from Text import Text
-from Title import Title
-from Score import Score
-from Powerup import Powerup
+from Zombie import Zombie
+#from Text import Text
+#from Title import Title
+#from Score import Score
+#from Powerup import Powerup
 
 
 pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 800 
+width = 900 
 height = 600
 size = width, height
 
@@ -21,10 +21,13 @@ bgColor = r,g,b = 150, 25, 10
 
 screen = pygame.display.set_mode(size)
 
-player = PlayerBall([width/2, height/2])
+player = Player([width/2, height/2])
 
-balls = []
-balls += [Ball("images/Ball/ball.png", [4,5], [100, 125])]
+enemies = []
+
+bullets = []
+
+spawnRate = .33 #seconds
 
 while True:
 	for event in pygame.event.get():
@@ -38,6 +41,8 @@ while True:
 				player.go("down")
 			if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 				player.go("left")
+			if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+				bullets += [player.shoot()]
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_w or event.key == pygame.K_UP:
 				player.go("stop up")
@@ -48,33 +53,39 @@ while True:
 			if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 				player.go("stop left")
 		
-	if len(balls) < 10:
-		if random.randint(0, .25*60) == 0:
-			balls += [Ball("images/Ball/ball.png",
-					  [random.randint(0,10), random.randint(0,10)],
-					  [random.randint(100, width-100), random.randint(100, height-100)])
-					  ]
-	#if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN
-		if player.facing("right")
-			#spawnrightbullet
+	if len(enemies) < 120:
+		if random.randint(0, int(spawnRate*60)) == 0:
+			side = random.randint(1,4)
+			if side == 1: #top
+				enemies += [Zombie([random.randint(0,width),-50])]
+			elif side == 2: #right
+				enemies += [Zombie([width+50, random.randint(0,height)])]
+			elif side == 1: #bottom
+				enemies += [Zombie([random.randint(0,width),height+50])]
+			elif side == 2: #left
+				enemies += [Zombie([-50, random.randint(0,height)])]
 		
 	player.update(width, height)
-	for ball in balls:
-		ball.update(width, height)
+	for enemy in enemies:
+		enemy.update(width, height, player.rect.center)
+	for bullet in bullets:
+		bullet.update(width, height)
 		
-	for bully in balls:
-		for victem in balls:
-			bully.collideBall(victem)
+	for bully in enemies:
+		for victem in enemies:
+			bully.collideZombie(victem)
 			bully.collidePlayer(player)
 	
-	for ball in balls:
-		if not ball.living:
-			balls.remove(ball)
+	for enemy in enemies:
+		if not enemy.living:
+			enemies.remove(enemy)
 	
 	bgColor = r,g,b
 	screen.fill(bgColor)
-	for ball in balls:
-		screen.blit(ball.image, ball.rect)
+	for enemy in enemies:
+		screen.blit(enemy.image, enemy.rect)
+	for bullet in bullets:
+		screen.blit(bullet.image, bullet.rect)
 	screen.blit(player.image, player.rect)
 	pygame.display.flip()
 	clock.tick(60)
