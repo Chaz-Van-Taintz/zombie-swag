@@ -71,14 +71,25 @@ while True:
 	for bullet in bullets:
 		bullet.update(width, height)
 		
-	#for bully in enemies:
-		#for victem in enemies:
-			#bully.collideZombie(victem)
-			#bully.collidePlayer(player)
+	for bullet in bullets:
+		for enemy in enemies:
+			bullet.collideZombie(enemy)
+			#enemy.collideBullet(bullet)
+	
+	for enemy in enemies:
+		for bullet in bullets:
+			enemy.collideBullet(bullet)
 	
 	for enemy in enemies:
 		if not enemy.living:
 			enemies.remove(enemy)
+	
+	for bullet in bullets:
+		if not bullet.living:
+			bullets.remove(bullet)
+	
+	#for i, z in enumerate(enemies):
+		#print i, z.rect.center
 	
 	bgColor = r,g,b
 	screen.fill(bgColor)

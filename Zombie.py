@@ -1,4 +1,4 @@
-import pygame,math
+import pygame,math,random
 from Ball import Ball
 
 
@@ -22,7 +22,7 @@ class Zombie(Ball):
 		self.maxWait = 60*.25
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
-		self.maxSpeed = 10
+		self.maxSpeed = random.randint(1,3)
 			
 	def update(self, width, height, playerPos):
 		self.facePlayer(playerPos)
@@ -34,9 +34,19 @@ class Zombie(Ball):
 		xdiff = pt[0] - self.rect.center[0]
 		ydiff = pt[1] - self.rect.center[1]
 		
-		if math.fabs(xdiff) > math.fabs(ydiff): #left/right
-			if xdiff > 0: #right
-				self.facing = "right"
+		if xdiff > 0: #go right
+			self.speedx = self.maxSpeed
+		elif xdiff < 0: #go left
+			self.speedx = -self.maxSpeed
+		else:
+			self.speedx = 0
+			
+		if ydiff > 0: #go down
+			self.speedy = self.maxSpeed
+		elif ydiff < 0: #go up
+			self.speedy = -self.maxSpeed
+		else:
+			self.speedy = 0
 				
 		
 	def collideWall(self, width, height):
@@ -74,3 +84,9 @@ class Zombie(Ball):
 				self.images = self.leftImages
 			
 			self.image = self.images[self.frame]
+	
+	def collideBullet(self, other):
+		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+				if (self.radius + other.radius) > self.distance(other.rect.center):
+					self.living = False
