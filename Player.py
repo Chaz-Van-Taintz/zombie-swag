@@ -95,6 +95,11 @@ class Player(Ball):
 			
 	def shoot(self):
 		return Bullet(self.rect.center, self.facing, self.gunSpeed)
+	#def shoot2(self):
+		gunspeed = (2*gunspeed)
+		return Bullet(self.rect.center, self.facing, self.gunSpeed)
+	#def shoot3(self):
+		return Bullet(self.rect.center, self.facingx, self.facingy, self.gunSpeed)
 
 
 
