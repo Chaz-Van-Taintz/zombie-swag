@@ -42,7 +42,13 @@ while True:
 			if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 				player.go("left")
 			if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
-				bullets += [player.shoot()]
+				bullets += player.shoot()
+			if event.key == pygame.K_1 or event.key == pygame.K_KP1:
+				player.gun = player.pistol
+			if event.key == pygame.K_2 or event.key == pygame.K_KP2:
+				player.gun = player.shotGun
+			if event.key == pygame.K_3 or event.key == pygame.K_KP3:
+				player.gun = player.uzi
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_w or event.key == pygame.K_UP:
 				player.go("stop up")
@@ -52,7 +58,9 @@ while True:
 				player.go("stop down")
 			if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 				player.go("stop left")
-		
+			if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+				player.shoot("stop")
+			
 	if len(enemies) < 120:
 		if random.randint(0, int(spawnRate*60)) == 0:
 			side = random.randint(1,4)
@@ -66,6 +74,8 @@ while True:
 				enemies += [Zombie([-50, random.randint(0,height)])]
 		
 	player.update(width, height)
+	if player.shooting:
+		bullets += player.shoot()
 	for enemy in enemies:
 		enemy.update(width, height, player.rect.center)
 	for bullet in bullets:

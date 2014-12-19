@@ -3,15 +3,15 @@ import pygame
 from Ball import Ball
 
 class Bullet(Ball):
-	def __init__(self, pos, heading, bspeed):
+	def __init__(self, pos, bspeed, heading, heading2 = None):
 		Ball.__init__(self, "RSC/Bullet/bullet1.png", [0,0], pos)
-		if heading == "up":
+		if heading == "up" or heading2 == "up":
 			self.speedy = -bspeed
-		if heading == "down":
+		if heading == "down" or heading2 == "down":
 			self.speedy = bspeed
-		if heading == "right":
+		if heading == "right" or heading2 == "right":
 			self.speedx = bspeed
-		if heading == "left":
+		if heading == "left" or heading2 == "left":
 			self.speedx = -bspeed
 
 	def collideZombie(self, other):
