@@ -68,9 +68,9 @@ while True:
 				enemies += [Zombie([random.randint(0,width),-50])]
 			elif side == 2: #right
 				enemies += [Zombie([width+50, random.randint(0,height)])]
-			elif side == 1: #bottom
+			elif side == 3: #bottom
 				enemies += [Zombie([random.randint(0,width),height+50])]
-			elif side == 2: #left
+			elif side == 4: #left
 				enemies += [Zombie([-50, random.randint(0,height)])]
 		
 	player.update(width, height)
