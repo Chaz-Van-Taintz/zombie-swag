@@ -1,4 +1,4 @@
-import pygame
+import pygame,math,random
 
 class Gun():
 	def __init__(self, kind):
@@ -18,3 +18,8 @@ class Gun():
 			self.gunSpeed = 15
 			self.ammo = None
 			self.coolDownMax = int(60*.1)
+		if kind == "joker":
+			self.kind = kind
+			self.gunSpeed = 100
+			self.ammo = None
+			self.coolDownMax = 1

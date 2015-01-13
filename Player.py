@@ -5,14 +5,14 @@ from Gun import Gun
 
 class Player(Ball):
     def __init__(self, pos):
-        Ball.__init__(self, "RSC/Player/redplayeru.png", [0,0], pos)
-        self.upImages = [pygame.image.load("RSC/Player/redplayeru.png"),
+        Ball.__init__(self, "RSC/Player/blueplayeru.png", [0,0], pos)
+        self.upImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
                         ]
-        self.downImages = [pygame.image.load("RSC/Player/redplayerd.png"),
+        self.downImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
                           ]
-        self.leftImages = [pygame.image.load("RSC/Player/redplayerl.png"),
+        self.leftImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
                            ]
-        self.rightImages = [pygame.image.load("RSC/Player/redplayerr.png"),
+        self.rightImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
                             ]
         self.facing = "up"
         self.changed = False
@@ -27,7 +27,8 @@ class Player(Ball):
         self.pistol = Gun("pistol")
         self.uzi = Gun("uzi")
         self.shotGun = Gun("shot gun")
-        self.gun = self.shotGun
+        self.joker = Gun("joker")
+        self.gun = self.pistol
         self.shooting = False
             
     def update(self, width, height):
@@ -123,6 +124,8 @@ class Player(Ball):
             elif self.gun.kind == "uzi":
                 self.shooting = True
                 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
+            elif self.gun.kind == "joker":
+				 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
         else:
             return []
             
