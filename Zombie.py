@@ -5,14 +5,10 @@ from Ball import Ball
 class Zombie(Ball):
 	def __init__(self, pos):
 		Ball.__init__(self, "RSC/Zombie/zombieu1.png", [0,0], pos)
-		self.upImages = [pygame.image.load("RSC/Zombie/zombieu1.png"),
-						 ]
-		self.downImages = [pygame.image.load("RSC/Zombie/zombied1.png"),
-						   ]
-		self.leftImages = [pygame.image.load("RSC/Zombie/zombiel1.png"),
-						   ]
-		self.rightImages = [pygame.image.load("RSC/Zombie/zombier1.png"),
-						    ]
+		self.upImages = [pygame.image.load("RSC/Zombie/zombieu1.png")]
+		self.downImages = [pygame.image.load("RSC/Zombie/zombied1.png")]
+		self.leftImages = [pygame.image.load("RSC/Zombie/zombiel1.png")]
+		self.rightImages = [pygame.image.load("RSC/Zombie/zombier1.png")]
 		self.facing = "up"
 		self.changed = False
 		self.images = self.upImages
@@ -74,13 +70,17 @@ class Zombie(Ball):
 				self.frame = 0
 		
 		if self.changed:	
-			if self.facing == "up":
+			if self.speedy == -self.maxSpeed:
+				self.facing == "up"
 				self.images = self.upImages
-			elif self.facing == "down":
+			elif self.speedy == self.maxSpeed:
+				self.facing == "down"
 				self.images = self.downImages
-			elif self.facing == "right":
+			elif self.speedx == self.maxSpeed:
+				self.facing == "right"
 				self.images = self.rightImages
-			elif self.facing == "left":
+			elif self.speedx == -self.maxSpeed:
+				self.facing == "left"
 				self.images = self.leftImages
 			
 			self.image = self.images[self.frame]
