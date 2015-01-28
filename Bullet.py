@@ -3,7 +3,7 @@ import pygame
 from Ball import Ball
 
 class Bullet(Ball):
-	def __init__(self, pos, bspeed, heading, heading2 = None):
+	def __init__(self, pos, bspeed, heading, heading2 = None, life = 500):
 		Ball.__init__(self, "RSC/Bullet/bullet1.png", [0,0], pos)
 		if heading == "up" or heading2 == "up":
 			self.speedy = -bspeed
@@ -13,13 +13,22 @@ class Bullet(Ball):
 			self.speedx = bspeed
 		if heading == "left" or heading2 == "left":
 			self.speedx = -bspeed
+		self.life = life
 
 	def collideZombie(self, other):
 		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
 			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
 				if (self.radius + other.radius) > self.distance(other.rect.center):
 					self.living = False
+		return []
 	
+	def update(self, width, height):
+		Ball.update(self, width, height)
+		if self.life > 0:
+			self.life -= 1
+		else:
+			self.living = False
+			
 	def collideWall(self, width, height):
 		if not self.didBounceX:
 			#print "trying to hit Wall"
@@ -28,3 +37,20 @@ class Bullet(Ball):
 		if not self.didBounceY:
 			if self.rect.top < 0 or self.rect.bottom > height:
 				self.living = False
+
+class Exploder(Bullet):
+	def __init__(self, pos, bspeed, heading, heading2 = None, life = 40):
+		Bullet.__init__(self, pos, bspeed, heading, heading2 = None)
+		self.bSpeed = bspeed
+		self.life = life
+		
+	def collideZombie(self, other):
+		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+				if (self.radius + other.radius) > self.distance(other.rect.center):
+					self.living = False
+					return [Exploder(self.rect.center, self.bSpeed, "right", self.life/3),
+                            Exploder(self.rect.center, self.bSpeed, "up", self.life/3),
+                            Exploder(self.rect.center, self.bSpeed, "left", self.life/3),
+                            Exploder(self.rect.center, self.bSpeed, "down", self.life/3)]
+		return []

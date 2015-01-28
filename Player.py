@@ -1,6 +1,6 @@
 import pygame
 from Ball import Ball
-from Bullet import Bullet
+from Bullet import *
 from Gun import Gun
 
 class Player(Ball):
@@ -28,6 +28,7 @@ class Player(Ball):
         self.uzi = Gun("uzi")
         self.shotGun = Gun("shot gun")
         self.joker = Gun("joker")
+        self.exploder = Gun("exploder")
         self.gun = self.pistol
         self.shooting = False
             
@@ -35,7 +36,7 @@ class Player(Ball):
         Ball.update(self, width, height)
         self.animate()
         self.changed = False
-        print self.gun.coolDown
+        #print self.gun.coolDown
         if self.gun.coolDown > 0:
             if self.gun.coolDown < self.gun.coolDownMax:
                 self.gun.coolDown += 1
@@ -125,7 +126,9 @@ class Player(Ball):
                 self.shooting = True
                 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
             elif self.gun.kind == "joker":
-				 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
+                return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
+            elif self.gun.kind == "exploder":
+                return [Exploder(self.rect.center, self.gun.gunSpeed, self.facing)]
         else:
             return []
             
