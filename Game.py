@@ -62,6 +62,9 @@ while True:
 			if event.key == pygame.K_5 or event.key == pygame.K_KP5:
 				player.gun = player.exploder
 				player.shoot("stop")
+			if event.key == pygame.K_6 or event.key == pygame.K_KP6:
+				player.gun = player.laser
+				player.shoot("stop")
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_w or event.key == pygame.K_UP:
 				player.go("stop up")
@@ -107,8 +110,6 @@ while True:
 	#for enemy in enemies:
 		#for bullet in bullets:
 			#enemy.collideBullet(bullet)
-		#for exploder in exploders:
-			#enemy.collideBullet(exploder)
 	
 	for enemy in enemies:
 		if not enemy.living:
@@ -117,9 +118,7 @@ while True:
 		if not bullet.living:
 			bullets.remove(bullet)
 	
-	#for exploder in exploders:
-		#if not exploder.living:
-			#exploder.remove(exploder)
+	
 	
 	#for i, z in enumerate(enemies):
 		#print i, z.rect.center
@@ -131,8 +130,6 @@ while True:
 		screen.blit(enemy.image, enemy.rect)
 	for bullet in bullets:
 		screen.blit(bullet.image, bullet.rect)
-	#for exploder in exploders:
-		#screen.blit(exploder.image, exploder.rect)
 	screen.blit(player.image, player.rect)
 	pygame.display.flip()
 	clock.tick(60)

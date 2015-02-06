@@ -33,3 +33,9 @@ class Gun():
 			self.ammo = None
 			self.coolDownMax = 5
 			self.life = 40
+		if kind == "laser":
+			self.kind = kind
+			self.gunSpeed = 15
+			self.ammo = None
+			self.coolDownMax = int(60*.001)
+			self.life = 500
