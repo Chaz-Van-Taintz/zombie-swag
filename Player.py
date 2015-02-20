@@ -1,18 +1,18 @@
 import pygame
 from Ball import Ball
-from Bullet import Bullet
+from Bullet import *
 from Gun import Gun
 
 class Player(Ball):
     def __init__(self, pos):
-        Ball.__init__(self, "RSC/Player/blueplayeru.png", [0,0], pos)
-        self.upImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
+        Ball.__init__(self, "RSC/Player/RedMenace.png", [0,0], pos)
+        self.upImages = [pygame.image.load("RSC/Player/RedMenace.png"),
                         ]
-        self.downImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
+        self.downImages = [pygame.image.load("RSC/Player/RedMenace.png"),
                           ]
-        self.leftImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
+        self.leftImages = [pygame.image.load("RSC/Player/RedMenace.png"),
                            ]
-        self.rightImages = [pygame.image.load("RSC/Player/blueplayeru.png"),
+        self.rightImages = [pygame.image.load("RSC/Player/RedMenace.png"),
                             ]
         self.facing = "up"
         self.changed = False
@@ -28,6 +28,8 @@ class Player(Ball):
         self.uzi = Gun("uzi")
         self.shotGun = Gun("shot gun")
         self.joker = Gun("joker")
+        self.exploder = Gun("exploder")
+        self.laser = Gun("laser")
         self.gun = self.pistol
         self.shooting = False
             
@@ -35,7 +37,7 @@ class Player(Ball):
         Ball.update(self, width, height)
         self.animate()
         self.changed = False
-        print self.gun.coolDown
+        #print self.gun.coolDown
         if self.gun.coolDown > 0:
             if self.gun.coolDown < self.gun.coolDownMax:
                 self.gun.coolDown += 1
@@ -125,7 +127,12 @@ class Player(Ball):
                 self.shooting = True
                 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
             elif self.gun.kind == "joker":
-				 return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
+                return [Bullet(self.rect.center, self.gun.gunSpeed, self.facing)]
+            elif self.gun.kind == "exploder":
+                return [Exploder(self.rect.center, self.gun.gunSpeed, self.facing)]
+            elif self.gun.kind == "laser":
+                self.shooting = True
+                return [Laser(self.rect.center, self.gun.gunSpeed, self.facing)]
         else:
             return []
             

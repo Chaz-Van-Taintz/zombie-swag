@@ -90,3 +90,11 @@ class Zombie(Ball):
 			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
 				if (self.radius + other.radius) > self.distance(other.rect.center):
 					self.living = False
+
+#class Skeleton (Zombie):
+	#def __init__(self, pos):
+		#Zombie.__init__(self, "RSC/Zombie/zombieu1.png", [0,0], pos)
+		#self.upImages = [pygame.image.load("RSC/Zombie/zombieu1.png")]
+		#self.downImages = [pygame.image.load("RSC/Zombie/zombied1.png")]
+		#self.leftImages = [pygame.image.load("RSC/Zombie/zombiel1.png")]
+		#self.rightImages = [pygame.image.load("RSC/Zombie/zombier1.png")]

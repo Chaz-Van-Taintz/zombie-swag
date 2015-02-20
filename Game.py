@@ -1,7 +1,7 @@
 import pygame, sys, random
 from Ball import Ball
 from Player import Player
-from Bullet import Bullet
+from Bullet import *
 from Zombie import Zombie
 #from Text import Text
 #from Title import Title
@@ -59,6 +59,12 @@ while True:
 			if event.key == pygame.K_4 or event.key == pygame.K_KP4:
 				player.gun = player.joker
 				player.shoot("stop")
+			if event.key == pygame.K_5 or event.key == pygame.K_KP5:
+				player.gun = player.exploder
+				player.shoot("stop")
+			if event.key == pygame.K_6 or event.key == pygame.K_KP6:
+				player.gun = player.laser
+				player.shoot("stop")
 		if event.type == pygame.KEYUP:
 			if event.key == pygame.K_w or event.key == pygame.K_UP:
 				player.go("stop up")
@@ -93,20 +99,26 @@ while True:
 		
 	for bullet in bullets:
 		for enemy in enemies:
-			bullet.collideZombie(enemy)
-			#enemy.collideBullet(bullet)
-	
-	for enemy in enemies:
-		for bullet in bullets:
+			oldBlen = len(bullets)
+			bullets += bullet.collideZombie(enemy)
 			enemy.collideBullet(bullet)
+			if not enemy.living:
+				enemies.remove(enemy)
+		if not bullet.living:
+			bullets.remove(bullet)
+	
+	#for enemy in enemies:
+		#for bullet in bullets:
+			#enemy.collideBullet(bullet)
 	
 	for enemy in enemies:
 		if not enemy.living:
 			enemies.remove(enemy)
-	
 	for bullet in bullets:
 		if not bullet.living:
 			bullets.remove(bullet)
+	
+	
 	
 	#for i, z in enumerate(enemies):
 		#print i, z.rect.center
