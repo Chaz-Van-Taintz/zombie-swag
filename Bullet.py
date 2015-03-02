@@ -4,7 +4,7 @@ from Ball import Ball
 
 class Bullet(Ball):
 	def __init__(self, pos, bspeed, heading, heading2 = None, life = 500):
-		Ball.__init__(self, "RSC/Bullet/Lasershot.png", [0,0], pos)
+		Ball.__init__(self, "RSC/Bullet/Illuminati1.png", [0,0], pos)
 		if heading == "up" or heading2 == "up":
 			self.speedy = -bspeed
 		if heading == "down" or heading2 == "down":
@@ -59,7 +59,7 @@ class Exploder(Bullet):
 class Laser(Bullet):
 	def __init__(self, pos, bspeed, heading, heading2 = None, life = 100):
 		Bullet.__init__(self, pos, bspeed, heading, heading2 = None)
-		self.image = pygame.image.load("RSC/Bullet/Illuminati1.png")
+		self.image = pygame.image.load("RSC/Bullet/Lasershot.png")
 	def collideZombie(self, other):
 		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
 			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:

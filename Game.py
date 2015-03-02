@@ -2,7 +2,7 @@ import pygame, sys, random
 from Ball import Ball
 from Player import Player
 from Bullet import *
-from Zombie import Zombie
+from Zombie import *
 #from Text import Text
 #from Title import Title
 #from Score import Score
@@ -20,7 +20,7 @@ size = width, height
 screen = pygame.display.set_mode(size)
 
 bgColor = r,g,b = 100, 30, 100
-bgImage = pygame.image.load("RSC/Background/background1.png").convert()
+bgImage = pygame.image.load("RSC/Background/Spiderweb.png").convert()
 bgRect = bgImage.get_rect()
 
 
@@ -80,14 +80,43 @@ while True:
 	if len(enemies) < 120:
 		if random.randint(0, int(spawnRate*60)) == 0:
 			side = random.randint(1,4)
+			kind = random.randint(1,2,3,4)
 			if side == 1: #top
-				enemies += [Zombie([random.randint(0,width),-50])]
+				if kind == 1:
+					enemies += [Zombie([random.randint(0,width),-50])]
+				elif kind == 2:
+					enemies += [Maoira([random.randint(0,width),-50])]
+				elif kind == 3:
+					enemies += [Phantom([random.randint(0,width),-50])]
+				elif kind == 4:
+					enemies += [Druflyll([random.randint(0,width),-50])]
 			elif side == 2: #right
-				enemies += [Zombie([width+50, random.randint(0,height)])]
+				if kind == 1:
+					enemies += [Zombie([width+50, random.randint(0,height)])]
+				elif kind == 2:
+					enemies += [Maoira([width+50, random.randint(0,height)])]
+				elif kind == 3:
+					enemies += [Phantom([width+50, random.randint(0,height)])]
+				elif kind == 4:
+					enemies += [Druflyll([width+50, random.randint(0,height)])]
 			elif side == 3: #bottom
-				enemies += [Zombie([random.randint(0,width),height+50])]
+				if kind == 1:
+					enemies += [Zombie([random.randint(0,width),height+50])]
+				elif kind == 2:
+					enemies += [Maoira([random.randint(0,width),height+50])]
+				elif kind == 3:
+					enemies += [Phantom([random.randint(0,width),height+50])]
+				elif kind == 4:
+					enemies += [Druflyll([random.randint(0,width),height+50])]
 			elif side == 4: #left
-				enemies += [Zombie([-50, random.randint(0,height)])]
+				if kind == 1:
+					enemies += [Zombie([-50, random.randint(0,height)])]
+				elif kind == 2:
+					enemies += [Maoira([-50, random.randint(0,height)])]
+				elif kind == 3:
+					enemies += [Phantom([-50, random.randint(0,height)])]
+				elif kind == 4:
+					enemies += [Druflyll([-50, random.randint(0,height)])]
 		
 	player.update(width, height)
 	if player.shooting:
