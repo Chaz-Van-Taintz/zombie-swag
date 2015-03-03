@@ -80,7 +80,7 @@ while True:
 	if len(enemies) < 120:
 		if random.randint(0, int(spawnRate*60)) == 0:
 			side = random.randint(1,4)
-			kind = random.randint(1,2,3,4)
+			kind = random.randint(1,4)
 			if side == 1: #top
 				if kind == 1:
 					enemies += [Zombie([random.randint(0,width),-50])]
