@@ -19,7 +19,8 @@ class Zombie(Ball):
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
 		self.maxSpeed = random.randint(1,3)
-			
+		self.kind = "zombie"
+		
 	def update(self, width, height, playerPos):
 		self.facePlayer(playerPos)
 		Ball.update(self, width, height)
@@ -109,6 +110,7 @@ class  Maoira(Zombie):
 		self.maxWait = 60*.25
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
+		self.kind = "maoira"
 		
 	def update(self, width, height, playerPos):
 		self.facePlayer(playerPos)
@@ -183,11 +185,11 @@ class  Maoira(Zombie):
 
 class Phantom(Zombie):
 	def __init__(self, pos):
-		Ball.__init__(self, "RSC/Zombie/Scaryface.png", [0,0], pos)
-		self.upImages = [pygame.image.load("RSC/Zombie/Scaryface.png")]
-		self.downImages = [pygame.image.load("RSC/Zombie/Scaryface.png")]
-		self.leftImages = [pygame.image.load("RSC/Zombie/Scaryface.png")]
-		self.rightImages = [pygame.image.load("RSC/Zombie/Scaryface.png")]
+		Ball.__init__(self, "RSC/Zombie/Phantom.png", [0,0], pos)
+		self.upImages = [pygame.image.load("RSC/Zombie/Phantom.png")]
+		self.downImages = [pygame.image.load("RSC/Zombie/Phantom.png")]
+		self.leftImages = [pygame.image.load("RSC/Zombie/Phantom.png")]
+		self.rightImages = [pygame.image.load("RSC/Zombie/Phantom.png")]
 		self.facing = "up"
 		self.changed = False
 		self.images = self.upImages
@@ -198,6 +200,7 @@ class Phantom(Zombie):
 		self.maxWait = 60*.25
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
+		self.kind = "phantom"
 		
 	def update(self, width, height, playerPos):
 		self.facePlayer(playerPos)
@@ -287,6 +290,8 @@ class Druflyll(Zombie):
 		self.maxWait = 60*.25
 		self.image = self.images[self.frame]
 		self.rect = self.image.get_rect(center = self.rect.center)
+		self.life = 3.0
+		self.kind = "druflyll"
 		
 	def update(self, width, height, playerPos):
 		self.facePlayer(playerPos)
@@ -355,9 +360,13 @@ class Druflyll(Zombie):
 	
 	def collideBullet(self, other):
 		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-				if (self.radius + other.radius) > self.distance(other.rect.center):
-					self.living = False
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						if self.life > 0.0:
+							self.life = self.life - 1.1
+						elif  self.life < 0:
+							self.living = False
+		
 	
 	
 	

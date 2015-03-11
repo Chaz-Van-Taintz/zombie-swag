@@ -32,6 +32,7 @@ class Player(Ball):
         self.laser = Gun("laser")
         self.gun = self.pistol
         self.shooting = False
+        self.life = 100
             
     def update(self, width, height):
         Ball.update(self, width, height)
@@ -136,4 +137,12 @@ class Player(Ball):
         else:
             return []
             
+    def collideZombie(self, other):
+		if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+			if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+				if (self.radius + other.radius) > self.distance(other.rect.center):
+					if self.life > 0:
+						self.life = self.life - 11
+					elif self.life < 0: 
+						self.living = False        
 
