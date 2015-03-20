@@ -13,13 +13,13 @@ pygame.init()
 clock = pygame.time.Clock()
 
 width = 900 
-height = 600
+height = 615
 size = width, height
 
 screen = pygame.display.set_mode(size)
 
 bgColor = r,g,b = 100, 30, 100
-bgImage = pygame.image.load("RSC/Background/Blood.png").convert()
+bgImage = pygame.image.load("RSC/Background/FlameWhisps.png").convert()
 bgRect = bgImage.get_rect()
 
 
@@ -32,9 +32,9 @@ bullets = []
 
 players = []
 
-score = Score([width-180, height-25], "Score: ", 80)
+score = Score([width-300, height-25], "Score: ", 80)
 
-spawnRate = .1 #seconds
+spawnRate = .001 #seconds
 
 while True:
     for event in pygame.event.get():
@@ -80,46 +80,86 @@ while True:
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
                 player.shoot("stop")
             
-    if len(enemies) < 120:
+    if len(enemies) < 120000:
         if random.randint(0, int(spawnRate*60)) == 0:
             side = random.randint(1,4)
-            kind = random.randint(1,4)
+            kind = random.randint(1,121)
             if side == 1: #top
-                if kind == 1:
+                if kind <50:
                     enemies += [Zombie([random.randint(0,width),-50])]
-                elif kind == 2:
+                elif kind <71:
                     enemies += [Maoira([random.randint(0,width),-50])]
-                elif kind == 3:
+                elif kind <77:
                     enemies += [Phantom([random.randint(0,width),-50])]
-                elif kind == 4:
+                elif kind <86:
                     enemies += [Druflyll([random.randint(0,width),-50])]
+                elif kind <101:
+                    enemies += [Chatterbox([random.randint(0,width),-50])]
+                elif kind <102:
+                    enemies += [Illuminatus([random.randint(0,width),-50])]
+                elif kind <111:
+                    enemies += [Raksasha([random.randint(0,width),-50])]
+                elif kind <122:
+                    enemies += [Ghast([random.randint(0,width),-50])]
+                
+                    
             elif side == 2: #right
-                if kind == 1:
+                if kind <50:
                     enemies += [Zombie([width+50, random.randint(0,height)])]
-                elif kind == 2:
+                elif kind <71:
                     enemies += [Maoira([width+50, random.randint(0,height)])]
-                elif kind == 3:
+                elif kind <77:
                     enemies += [Phantom([width+50, random.randint(0,height)])]
-                elif kind == 4:
+                elif kind <86:
                     enemies += [Druflyll([width+50, random.randint(0,height)])]
+                elif kind <101:
+                    enemies += [Chatterbox([width+50, random.randint(0,height)])]
+                elif kind <102:
+                    enemies += [Illuminatus([width+50, random.randint(0,height)])]
+                elif kind <111:
+                    enemies += [Raksasha([width+50, random.randint(0,height)])]
+                elif kind <122:
+                    enemies += [Ghast([width+50, random.randint(0,height)])]
+                
+                    
             elif side == 3: #bottom
-                if kind == 1:
+                if kind <50:
                     enemies += [Zombie([random.randint(0,width),height+50])]
-                elif kind == 2:
+                elif kind <71:
                     enemies += [Maoira([random.randint(0,width),height+50])]
-                elif kind == 3:
+                elif kind <77:
                     enemies += [Phantom([random.randint(0,width),height+50])]
-                elif kind == 4:
+                elif kind <86:
                     enemies += [Druflyll([random.randint(0,width),height+50])]
+                elif kind <101:
+                    enemies += [Chatterbox([random.randint(0,width),height+50])]
+                elif kind <102:
+                    enemies += [Illuminatus([random.randint(0,width),height+50])]
+                elif kind <111:
+                    enemies += [Raksasha([random.randint(0,width),height+50])]
+                elif kind <122:
+                    enemies += [Ghast([random.randint(0,width),height+50])]
+               
+                    
             elif side == 4: #left
-                if kind == 1:
+                if kind <50:
                     enemies += [Zombie([-50, random.randint(0,height)])]
-                elif kind == 2:
+                elif kind <71:
                     enemies += [Maoira([-50, random.randint(0,height)])]
-                elif kind == 3:
+                elif kind <77:
                     enemies += [Phantom([-50, random.randint(0,height)])]
-                elif kind == 4:
+                elif kind <86:
                     enemies += [Druflyll([-50, random.randint(0,height)])]
+                elif kind <101:
+                    enemies += [Chatterbox([-50, random.randint(0,height)])]
+                elif kind <102:
+                    enemies += [Illuminatus([-50, random.randint(0,height)])]
+                elif kind <111:
+                    enemies += [Raksasha([-50, random.randint(0,height)])]
+                elif kind <121:
+                    enemies += [Ghast([-50, random.randint(0,height)])]
+                elif kind <122:
+                    enemies += [BadJuju([-50, random.randint(0,height)])]
     
     if len(enemies) > 60:
         bgImage = pygame.image.load("RSC/Background/OurSavior.png").convert()
@@ -148,12 +188,27 @@ while True:
                     score.increaseScore(500)
                     enemies.remove(enemy)
                 elif enemy.kind == "druflyll":
-                    score.increaseScore(2500)
+                    score.increaseScore(3500)
                     enemies.remove(enemy)
                 elif enemy.kind == "phantom":
                     score.increaseScore(5000)
                     enemies.remove(enemy)
-                    
+                elif enemy.kind == "chatterbox":
+                    score.increaseScore(2000)
+                    enemies.remove(enemy)
+                elif enemy.kind == "illuminatus":
+                    score.increaseScore(666666)
+                    enemies.remove(enemy)  
+                elif enemy.kind == "raksasha":
+                    score.increaseScore(7500)
+                    enemies.remove(enemy) 
+                elif enemy.kind == "ghast":
+                    score.increaseScore(7500)
+                    enemies.remove(enemy)     
+                elif enemy.kind == "badjuju":
+                    score.increaseScore(35353535353535353535353535353535)
+                    enemies.remove(enemy)        
+        
         if not bullet.living:
             bullets.remove(bullet)
     
