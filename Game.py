@@ -5,7 +5,6 @@ from Bullet import *
 from Zombie import *
 #from Title import Title
 from Score import *
-#from Powerup import Powerup
 
 
 pygame.init()
@@ -34,7 +33,7 @@ players = []
 
 score = Score([width-300, height-25], "Score: ", 80)
 
-spawnRate = .001 #seconds
+spawnRate = .1 #seconds
 
 while True:
     for event in pygame.event.get():
@@ -85,8 +84,10 @@ while True:
             side = random.randint(1,4)
             kind = random.randint(1,121)
             if side == 1: #top
-                if kind <50:
+                if kind <30:
                     enemies += [Zombie([random.randint(0,width),-50])]
+                elif kind <50:
+                    enemies += [RedZombie([random.randint(0,width),-50])]
                 elif kind <71:
                     enemies += [Maoira([random.randint(0,width),-50])]
                 elif kind <77:
@@ -104,8 +105,10 @@ while True:
                 
                     
             elif side == 2: #right
-                if kind <50:
+                if kind <30:
                     enemies += [Zombie([width+50, random.randint(0,height)])]
+                elif kind <50:
+                    enemies += [RedZombie([width+50, random.randint(0,height)])]
                 elif kind <71:
                     enemies += [Maoira([width+50, random.randint(0,height)])]
                 elif kind <77:
@@ -123,8 +126,10 @@ while True:
                 
                     
             elif side == 3: #bottom
-                if kind <50:
+                if kind <30:
                     enemies += [Zombie([random.randint(0,width),height+50])]
+                elif kind <50:
+                    enemies += [RedZombie([random.randint(0,width),height+50])]
                 elif kind <71:
                     enemies += [Maoira([random.randint(0,width),height+50])]
                 elif kind <77:
@@ -142,8 +147,10 @@ while True:
                
                     
             elif side == 4: #left
-                if kind <50:
+                if kind <30:
                     enemies += [Zombie([-50, random.randint(0,height)])]
+                if kind <50:
+                    enemies += [RedZombie([-50, random.randint(0,height)])]
                 elif kind <71:
                     enemies += [Maoira([-50, random.randint(0,height)])]
                 elif kind <77:
