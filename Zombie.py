@@ -97,8 +97,8 @@ class RedZombie(Zombie):
         Ball.__init__(self, "RSC/Zombie/RedZombieu.png", [0,0], pos)
         self.upImages = [pygame.image.load("RSC/Zombie/RedZombieu.png"), pygame.image.load("RSC/Zombie/RedZombieu1.png")]
         self.downImages = [pygame.image.load("RSC/Zombie/RedZombied.png"), pygame.image.load("RSC/Zombie/RedZombied1.png")]
-        self.leftImages = [pygame.image.load("RSC/Zombie/RedZombiel.png"), pygame.image.load("RSC/Zombie/RedZombiel.png")]
-        self.rightImages = [pygame.image.load("RSC/Zombie/RedZombier.png"), pygame.image.load("RSC/Zombie/RedZombier.png")]
+        self.leftImages = [pygame.image.load("RSC/Zombie/RedZombier.png"), pygame.image.load("RSC/Zombie/RedZombier.png")]
+        self.rightImages = [pygame.image.load("RSC/Zombie/RedZombiel.png"), pygame.image.load("RSC/Zombie/RedZombiel.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -365,10 +365,10 @@ class Phantom(Zombie):
 class Druflyll(Zombie):
     def __init__(self, pos):
         Ball.__init__(self, "RSC/Zombie/Druflyll.png", [0,0], pos)
-        self.upImages = [pygame.image.load("RSC/Zombie/Druflyll.png")]
-        self.downImages = [pygame.image.load("RSC/Zombie/Druflyll.png")]
-        self.leftImages = [pygame.image.load("RSC/Zombie/Druflyll.png")]
-        self.rightImages = [pygame.image.load("RSC/Zombie/Druflyll.png")]
+        self.upImages = [pygame.image.load("RSC/Zombie/Druflyll.png"),pygame.image.load("RSC/Zombie/Druflyll2.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll10.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll2.png")]
+        self.downImages = [pygame.image.load("RSC/Zombie/Druflyll.png"),pygame.image.load("RSC/Zombie/Druflyll2.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll10.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll2.png")]
+        self.leftImages = [pygame.image.load("RSC/Zombie/Druflyll.png"),pygame.image.load("RSC/Zombie/Druflyll2.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll10.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll2.png")]
+        self.rightImages = [pygame.image.load("RSC/Zombie/Druflyll.png"),pygame.image.load("RSC/Zombie/Druflyll2.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll10.png"),pygame.image.load("RSC/Zombie/Druflyll9.png"),pygame.image.load("RSC/Zombie/Druflyll8.png"),pygame.image.load("RSC/Zombie/Druflyll7.png"),pygame.image.load("RSC/Zombie/Druflyll6.png"),pygame.image.load("RSC/Zombie/Druflyll5.png"),pygame.image.load("RSC/Zombie/Druflyll4.png"),pygame.image.load("RSC/Zombie/Druflyll3.png"),pygame.image.load("RSC/Zombie/Druflyll2.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -741,16 +741,16 @@ class Raksasha(Zombie):
 class Ghast(Zombie):
     def __init__(self, pos):
         Ball.__init__(self, "RSC/Zombie/Ghast.png", [0,0], pos)
-        self.upImages = [pygame.image.load("RSC/Zombie/Ghast.png")]
-        self.downImages = [pygame.image.load("RSC/Zombie/Ghast.png")]
-        self.leftImages = [pygame.image.load("RSC/Zombie/Ghast.png")]
-        self.rightImages = [pygame.image.load("RSC/Zombie/Ghast.png")]
+        self.upImages = [pygame.image.load("RSC/Zombie/Ghast.png"), pygame.image.load("RSC/Zombie/Ghast1.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast5.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast1.png"),pygame.image.load("RSC/Zombie/Ghast1.png")]
+        self.downImages = [pygame.image.load("RSC/Zombie/Ghast.png"), pygame.image.load("RSC/Zombie/Ghast1.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast5.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast1.png"),pygame.image.load("RSC/Zombie/Ghast1.png")]
+        self.leftImages = [pygame.image.load("RSC/Zombie/Ghast.png"), pygame.image.load("RSC/Zombie/Ghast1.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast5.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast1.png"),pygame.image.load("RSC/Zombie/Ghast1.png")]
+        self.rightImages = [pygame.image.load("RSC/Zombie/Ghast.png"), pygame.image.load("RSC/Zombie/Ghast1.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast5.png"), pygame.image.load("RSC/Zombie/Ghast4.png"), pygame.image.load("RSC/Zombie/Ghast3.png"), pygame.image.load("RSC/Zombie/Ghast2.png"), pygame.image.load("RSC/Zombie/Ghast1.png"),pygame.image.load("RSC/Zombie/Ghast1.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
         self.frame = 0
         self.maxFrame = len(self.images) - 1
-        self.maxSpeed = 10
+        self.maxSpeed = 5
         self.waitCount = 0
         self.maxWait = 60*.25
         self.image = self.images[self.frame]

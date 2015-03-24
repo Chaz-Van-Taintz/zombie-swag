@@ -5,14 +5,14 @@ from Gun import Gun
 
 class Player(Ball):
     def __init__(self, pos):
-        Ball.__init__(self, "RSC/Player/Shadow.png", [0,0], pos)
-        self.upImages = [pygame.image.load("RSC/Player/Shadow.png"),
+        Ball.__init__(self, "RSC/Player/Shadow2.png", [0,0], pos)
+        self.upImages = [pygame.image.load("RSC/Player/Shadow2.png"),
                         ]
-        self.downImages = [pygame.image.load("RSC/Player/Shadow.png"),
+        self.downImages = [pygame.image.load("RSC/Player/Shadow2.png"),
                           ]
-        self.leftImages = [pygame.image.load("RSC/Player/Shadow.png"),
+        self.leftImages = [pygame.image.load("RSC/Player/Shadow2.png"),
                            ]
-        self.rightImages = [pygame.image.load("RSC/Player/Shadow.png"),
+        self.rightImages = [pygame.image.load("RSC/Player/Shadow2.png"),
                             ]
         self.facing = "up"
         self.changed = False

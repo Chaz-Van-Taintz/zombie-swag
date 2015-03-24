@@ -33,7 +33,7 @@ players = []
 
 score = Score([width-300, height-25], "Score: ", 80)
 
-spawnRate = .1 #seconds
+spawnRate = .33 #seconds
 
 while True:
     for event in pygame.event.get():
