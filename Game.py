@@ -18,7 +18,7 @@ size = width, height
 screen = pygame.display.set_mode(size)
 
 bgColor = r,g,b = 100, 30, 100
-bgImage = pygame.image.load("RSC/Background/FlameWhisps.png").convert()
+bgImage = pygame.image.load("RSC/Background/FlameWhispsBlue2Inversion.png").convert()
 bgRect = bgImage.get_rect()
 
 
