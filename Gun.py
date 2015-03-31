@@ -37,5 +37,5 @@ class Gun():
 			self.kind = kind
 			self.gunSpeed = 15
 			self.ammo = None
-			self.coolDownMax = int(60*.001)
+			self.coolDownMax = int(60*.000000000000000000000000000000000000000000000000000000000000000000000000000001)
 			self.life = 500

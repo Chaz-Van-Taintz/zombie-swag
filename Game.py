@@ -11,14 +11,14 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 900 
-height = 615
+width = 800 
+height = 600
 size = width, height
 
 screen = pygame.display.set_mode(size)
 
 bgColor = r,g,b = 100, 30, 100
-bgImage = pygame.image.load("RSC/Background/FlameWhispsBlue2Inversion.png").convert()
+bgImage = pygame.image.load("RSC/Background/FlameWhispsBlue2Inversion2.png").convert()
 bgRect = bgImage.get_rect()
 
 
@@ -33,7 +33,7 @@ players = []
 
 score = Score([width-300, height-25], "Score: ", 80)
 
-spawnRate = .33 #seconds
+spawnRate = .0003 #seconds
 
 while True:
     for event in pygame.event.get():
@@ -79,10 +79,10 @@ while True:
             if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
                 player.shoot("stop")
             
-    if len(enemies) < 120000:
+    if len(enemies) < 240:
         if random.randint(0, int(spawnRate*60)) == 0:
             side = random.randint(1,4)
-            kind = random.randint(1,121)
+            kind = random.randint(72,76)
             if side == 1: #top
                 if kind <30:
                     enemies += [Zombie([random.randint(0,width),-50])]
@@ -168,8 +168,8 @@ while True:
                 elif kind <122:
                     enemies += [BadJuju([-50, random.randint(0,height)])]
     
-    if len(enemies) > 60:
-        bgImage = pygame.image.load("RSC/Background/OurSavior.png").convert()
+    if len(enemies) > 100:
+        bgImage = pygame.image.load("RSC/Background/Ronald1.png").convert()
 
     
     
@@ -249,7 +249,3 @@ while True:
     screen.blit(score.image, score.rect)
     pygame.display.flip()
     clock.tick(60)
-
-
-
-
